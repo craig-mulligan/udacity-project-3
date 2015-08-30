@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+
+<div class="container content">
+	<div class="row">
+		
+	</div>
+	<div class="row profile">
+		<h4>Add Item</h4>
+		<div class="header">
+			<p>Adding item as</p>
+			<img src="{{user.picture}}">
+			<h3>{{user.username}}</h3>
+			<p>Only you will be able to edit/update this item</p>
+		</div>
+		<form method="POST" action="{{url_for('addItem')}}">
+		 <div class="form-group">
+		    {{ form.csrf_token }}
+		    {{ form.name.label }} {{ form.name(class_="form-control", size=20) }}
+		    {{ form.description.label }} {{ form.description(class_="form-control", rows="5") }}
+		    <div class="hide-it margin-bottom">
+			    <label>{{ form.category.label }}</label></br>
+			    <div class="col-md-6 no-left-padding">
+				    <select class="form-control" name="category">
+					{% for c in categories %}
+						<option>{{ c.name }}</option>
+					{% endfor %}
+					</select>
+				</div>
+				<div class="col-md-6">
+					</select> or <div class="btn btn-default" id="newCategory">New category</div>
+				</div>
+			</div>
+			<button class="btn btn-primary" type="submit">Add</button>
+		 </div>
+		    
+		</form>
+	</div>
+</div>
+
+{% endblock %}

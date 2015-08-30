@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+
+<div class="container content">
+	<div class="row profile">
+	<h4>Edit Item</h4>
+		<form method="POST" action="{{url_for('editItem', item_name=item.name, category_name=item.category.name)}}">
+		 <div class="form-group">
+		    {{ form.csrf_token }}
+		    {{ form.name.label }} {{ form.name(class_="form-control",value=item.name, size=20) }}
+		    {{ form.description.label }} 
+		    <!-- textarea doesn't have 'value' attr so had to add manually -->
+		    <textarea name="description" rows="5" class="form-control">{{item.description}}</textarea>
+		    <div class="hide-it margin-bottom">
+			    <label>{{ form.category.label }}</label></br>
+			    <div class="col-md-6 no-left-padding">
+				    <select class="form-control" name="category">
+				    <option>{{ category.name }}</option>
+					{% for c in categories %}
+						<option>{{ c.name }}</option>
+					{% endfor %}
+					</select>
+				</div>
+				<div class="col-md-6">
+					</select> or <div class="btn btn-default" id="newCategory">New category</div>
+				</div>
+			</div>
+			<div>
+				<button class="btn btn-primary" type="submit">Submit</button>
+				<a class="btn btn-danger" href="{{url_for('viewItem', category_name=category.name, item_name = item.name)}}">Cancel</a>
+			</div>
+		 </div>
+		    
+		</form>
+	</div>
+</div>
+
+{% endblock %}

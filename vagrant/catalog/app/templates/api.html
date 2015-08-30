@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container content">
+	<div class="row">
+		<div class="col-md-6 col-md-offset-3">
+		<h4>Our current API end-points</h4>
+		<p><a href="{{url_for('getItems')}}">/catalog.json</a></p>
+		<p><a href="{{url_for('getCategories')}}">/categories.json</a></p>
+		<p><a href="{{url_for('getUsers')}}">/users.json</a></p>
+		</div>
+	</div>
+</div>
+{% endblock %}

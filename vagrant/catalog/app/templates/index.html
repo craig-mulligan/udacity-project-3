@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="container content">
+	<div class="row">
+		<div class="col-md-4 categories">
+			<h4>Categories</h4>
+			<ul>
+			{% for c in categories %}
+			<li><a href="{{url_for('category', category_name = c.name)}}"><span>{{ c.name }}</span></a></li>
+			{% endfor %}
+			</ul>
+		</div>
+		<div class="col-md-8 items">
+			<h4>Items</h4>
+			<ul>
+			{% for i in items %}
+			<li><a href="{{url_for('viewItem', category_name=i.category.name, item_name = i.name)}}"><span>{{ i.name }}</span></a> {{(i.category.name)}}</li>
+			{% endfor %}
+			</ul>
+		</div>
+	</div>
+</div>
+
+{% endblock %}

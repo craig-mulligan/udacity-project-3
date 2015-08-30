@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container content">
+	<div class="row">
+		<div class="col-md-6 col-md-offset-3">
+		<h4>{{item.name}}</h4>
+		<p>{{item.description}}</p>
+		<a class="btn btn-primary" href="{{url_for('editItem', item_name=item.name, category_name=item.category.name)}}">edit</a> <a class="btn btn-danger" href="{{url_for('deleteItem', item_name=item.name, category_name=item.category.name)}}">delete</a>
+		</div>
+	</div>
+</div>
+{% endblock %}
