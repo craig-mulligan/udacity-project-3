@@ -25,7 +25,8 @@ def getUserID(email):
 
 def createItem(form):
 	category = categoryCheck(form)
-	newItem = Item(name=form.name.data, description=form.description.data, category_id=category.id, user_id=login_session['user_id'])	
+	newItem = Item(name=form.name.data, description=form.description.data, \
+		category_id=category.id, user_id=login_session['user_id'])	
 	session.add(newItem)
 	session.commit()
 
